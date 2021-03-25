@@ -1,10 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="../layout/header.jsp"%>
-<h1>선수 등록 페이지</h1>
+<h1 style="text-align:center">선수 등록 페이지</h1>
 
-<div class="container">
+<div class="container" style="text-align:center">
 	<form action="/player/save" method="post">
-		<div>
+		<div style="text-align:center">
 		    <!-- 선수이름 -->
 			<div>
 				<span>선수 이름</span>

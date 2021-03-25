@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="../layout/header.jsp"%>
-<h1>구단 등록 페이지</h1>
+<h1 style="text-align:center">구단 등록 페이지</h1>
 
-<div class="container">
+<div class="container" style="text-align:center">
 	<form action="/stadium/save" method="post">
 		<div>
 		

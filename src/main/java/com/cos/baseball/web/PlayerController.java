@@ -2,16 +2,18 @@ package com.cos.baseball.web;
 
 import java.util.List;
 
+import org.qlrm.mapper.JpaResultMapper;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.cos.baseball.domain.player.Player;
+import com.cos.baseball.domain.player.PlayerPositionDto;
+import com.cos.baseball.domain.query.PlayerQuery;
 import com.cos.baseball.domain.team.Team;
 import com.cos.baseball.service.PlayerService;
 import com.cos.baseball.service.TeamService;
@@ -26,6 +28,7 @@ public class PlayerController {
 
 	private final PlayerService playerService;
 	private final TeamService teamService;
+	private final PlayerQuery playerQuery;
 	
 	@GetMapping
 	public String home() {
@@ -66,5 +69,13 @@ public class PlayerController {
 		
 		return new CMRespDto<>(1,null); 
 
+	}
+	
+	@GetMapping("/player/position")
+	public String 플레이어포지션(Model model) {
+		JpaResultMapper jpaResultMapper = new JpaResultMapper();
+		List<PlayerPositionDto> playerPositionDto = jpaResultMapper.list(playerQuery.playerPivot(), PlayerPositionDto.class);
+		model.addAttribute("dto",playerPositionDto);
+		return "player/positionList";
 	}
 }
